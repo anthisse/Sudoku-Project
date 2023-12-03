@@ -3,6 +3,7 @@
 
 
 import pygame
+from Board import Board
 from sys import exit
 # Constants that control fonts and the window size
 from gui_constants import *
@@ -74,16 +75,17 @@ def draw_main_menu(screen):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if easy_rectangle.collidepoint(event.pos):
                     print("Easy button clicked!")
-                    # return 0
+                    return 0
                 if medium_rectangle.collidepoint(event.pos):
                     print("Medium button clicked!")
-                    # return 1
+                    return 1
                 if hard_rectangle.collidepoint(event.pos):
                     print("Hard button clicked!")
-                    # return 2
+                    return 2
                 # If the quit button is clicked, exit with success code 0
                 if quit_rectangle.collidepoint(event.pos):
                     print("Quit button clicked! Exiting.")
+                    pygame.quit()
                     exit(0)
 
         # Update the screen
@@ -101,12 +103,20 @@ def main():
 
     # Draw the main menu
     screen.blit(menu_background, (0, 0))
-    draw_main_menu(screen)
+    difficulty = draw_main_menu(screen)
+    # Create the board
+    print("Board is rendering")
+    board = Board(WIDTH, HEIGHT, screen, difficulty)
+    board.draw()
+    pygame.display.update()
 
+    # Event-driven logic
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                pygame.quit()
                 exit(0)
+
 
 
 if __name__ == "__main__":

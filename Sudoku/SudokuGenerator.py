@@ -15,7 +15,7 @@ class SudokuGenerator:
         self.box_length = math.sqrt(row_length)
 
     # returns a 2D python list of numbers
-    # TODO will need to loop over cells and get its value; perhaps cell needs getter funcs
+    # TODO will need to loop over Cells and get its value; perhaps Cell needs getter funcs
     def get_board(self):
         pass
 
@@ -94,6 +94,7 @@ class SudokuGenerator:
 
 # BEWARE: DO NOT ALTER!
 # Initialize a SudokuGenerator, fill its values, remove some cells, and return the solution as 2D lists
+# From https://github.com/zhoulisha/Sudoku-Project/
 def generate_sudoku(size, removed):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
