@@ -10,12 +10,12 @@ def draw_main_menu(screen):
     button_font = pygame.font.Font(None, 30)
 
     # Draw title information
-    title_surface = title_font.render("Welcome to Sudoku!", 1, LINE_COLOR)
+    title_surface = title_font.render("Welcome to Sudoku!", 1, BLACK)
     title_rectangle = title_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 150))
     screen.blit(title_surface, title_rectangle)
 
     # Draw subtitle information
-    subtitle_surface = subtitle_font.render("Select Difficulty:", 1, LINE_COLOR)
+    subtitle_surface = subtitle_font.render("Select Difficulty:", 1, BLACK)
     subtitle_rectangle = subtitle_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2))
     screen.blit(subtitle_surface, subtitle_rectangle)
 
