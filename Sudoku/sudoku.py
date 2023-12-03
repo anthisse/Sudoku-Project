@@ -1,3 +1,7 @@
+"""Play a classic game of sudoku"""
+# Driver program
+
+
 import pygame
 from sys import exit
 # Constants that control fonts and the window size
