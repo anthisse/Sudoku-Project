@@ -9,9 +9,6 @@ def draw_main_menu(screen):
     subtitle_font = pygame.font.Font(None, 70)
     button_font = pygame.font.Font(None, 30)
 
-    # TODO change background to image instead of solid color
-    screen.fill(BG_COLOR)
-
     # Draw title information
     title_surface = title_font.render("Welcome to Sudoku!", 1, LINE_COLOR)
     title_rectangle = title_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 150))
@@ -57,16 +54,28 @@ def draw_main_menu(screen):
             if event.type == pygame.QUIT:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pygame.display.update()
+                pass
+        pygame.display.update()
+
 
 # Driver program
 def main():
+    # Initialize pygame Set the window size, caption, and background image
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    draw_main_menu(screen)
 
     pygame.display.set_caption("Sudoku")
-    screen.fill(BG_COLOR)
+
+    menu_background = pygame.image.load('sudoku_background.jpg').convert()
+    menu_background = pygame.transform.smoothscale(menu_background, screen.get_size())
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit(0)
+            screen.blit(menu_background, (0, 0))
+            draw_main_menu(screen)
+
 
 if __name__ == "__main__":
     main()
