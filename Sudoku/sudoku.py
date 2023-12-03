@@ -3,6 +3,7 @@
 
 
 import pygame
+from SudokuGenerator import SudokuGenerator
 from Board import Board
 from sys import exit
 # Constants that control fonts and the window size
@@ -101,12 +102,17 @@ def main():
     menu_background = pygame.image.load('sudoku_background.jpg').convert()
     menu_background = pygame.transform.smoothscale(menu_background, screen.get_size())
 
-    # Draw the main menu
+    # Draw the main menu and get the difficulty
+    # TODO perhaps difficulty should not be returned by draw_main_menu; it looks out of place
     screen.blit(menu_background, (0, 0))
     difficulty = draw_main_menu(screen)
     # Create the board
     print("Board is rendering")
+    screen.fill(LIGHT_BLUE)
     board = Board(WIDTH, HEIGHT, screen, difficulty)
+    generator = SudokuGenerator(0)
+    print("Print board called!")
+    generator.print_board()
     board.draw()
     pygame.display.update()
 
@@ -116,7 +122,6 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit(0)
-
 
 
 if __name__ == "__main__":

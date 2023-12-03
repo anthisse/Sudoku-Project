@@ -20,16 +20,16 @@ class Cell:
         pass
 
     # Draw the cell
-    def draw(self, screen):
-        # FIXME This font size definitely needs to change
-        cell_font = pygame.font.Font(None, 30)
+    # def draw(self, screen):
+    #     # FIXME This font size definitely needs to change
+    #     cell_font = pygame.font.Font(None, 30)
+    #     cell_surf = cell_font.render(self.value, 1, BLACK)
+    #     if self.value() == 0:
+    #         cell_surf.get_rect(center=self)
+    #     # For each row
+    #     for row in range(BOARD_ROWS):
+    #         # For each column
+    #         for column in range(BOARD_COLS):
+    #             # If the cell is empty
 
-        # For each row
-        for row in range(BOARD_ROWS):
-            # For each column
-            for column in range(BOARD_COLS):
-                # If the cell is empty
-                if self.value() != 0:
-                    # Draw an empty cell
-                    pygame.draw.rect(screen, ())
 

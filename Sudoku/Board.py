@@ -1,5 +1,6 @@
 # TODO remove noinspection line
 # noinspection PyUnresolvedReferences
+from SudokuGenerator import SudokuGenerator
 from Cell import Cell
 from gui_constants import *
 import pygame
@@ -9,13 +10,14 @@ import pygame
 class Board:
     # Constructor
     def __init__(self, width, height, screen, difficulty):
-        self.screen = screen
         self.width = width
         self.height = height
+        self.screen = screen
         self.difficulty = difficulty
 
     # Draw an outline of the Sudoku grid and the cells
     # TODO Draw the cells
+    # TODO This function is a bit long. Perhaps it should be split into smaller pieces
     def draw(self):
         # Draw the horizontal lines
         for row in range(1, BOARD_ROWS):
@@ -26,7 +28,7 @@ class Board:
                                  BLACK,
                                  (0, row * CELL_SIZE),
                                  (WIDTH, row * CELL_SIZE),
-                                 10)
+                                 6)
             # Otherwise, draw a thin line
             else:
                 pygame.draw.line(self.screen,
@@ -43,7 +45,7 @@ class Board:
                                  BLACK,
                                  (column * CELL_SIZE, 0),
                                  (column * CELL_SIZE, HEIGHT),
-                                 10
+                                 6
                                  )
             # Otherwise, draw a thin line
             else:
@@ -53,6 +55,10 @@ class Board:
                                  (column * CELL_SIZE, HEIGHT),
                                  2
                                  )
+        # TODO Draw the cells
+        # for i, row in enumerate(SudokuGenerator.get_board()):
+        #     for j, column in enumerate(row):
+
 
     # TODO Select a cell
     def select(self, row, col):
@@ -75,6 +81,7 @@ class Board:
         pass
 
     # TODO reset all cells in the board
+    # Get the original board from SudokuGenerator
     def reset_to_original(self):
         pass
 

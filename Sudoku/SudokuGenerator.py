@@ -1,6 +1,9 @@
 # TODO this clutters the namespace. Consider importing only necessary methods from math & random
 import math
 import random
+import Cell
+import Board
+from gui_constants import *
 
 
 # Specification of SudokuGenerator
@@ -10,18 +13,32 @@ class SudokuGenerator:
         self.row_length = row_length
         self.removed_cells = removed_cells
         # TODO initialize as a 2D int list to represent the board
-        self.board = None
+        self.board = self.initialize_board()
 
+        # Dependency for fill_remaining
         self.box_length = math.sqrt(row_length)
 
+    # Initialize the board. Set every cell's value to 0
+    # TODO should this be @staticmethod?
+    def initialize_board(self):
+        board = []
+        for row in range(BOARD_ROWS):
+            row = []
+            for column in range(BOARD_COLS):
+                row.append(0)
+            board.append(row)
+        return board
+
     # returns a 2D python list of numbers
-    # TODO will need to loop over Cells and get its value; perhaps Cell needs getter funcs
     def get_board(self):
-        pass
+        return self.board
 
     # Print the board to the terminal
     def print_board(self):
-        return
+        for i, row in enumerate(self.get_board()):
+            for j, col in enumerate(row):
+                print(self.board[i][j], end=" ")
+            print()
 
     # Check if a number is repeated in a row
     def valid_in_row(self, row, num):
@@ -87,7 +104,7 @@ class SudokuGenerator:
         self.fill_diagonal()
         self.fill_remaining(0, self.box_length)
 
-    # Remove some cells from the board by setting the value to 0. If it is already 0, do not remove it again.
+    # TODO Randomly remove some cells from the board by setting the value to 0. If it is already 0, do not remove it again.
     def remove_cells(self):
         pass
 
